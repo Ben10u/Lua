@@ -1,4 +1,16 @@
-
+repeat task.wait(1) until game:IsLoaded()
+game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main"):WaitForChild("ChooseTeam")
+if game:GetService("Players").LocalPlayer.Team == nil then
+    repeat task.wait()
+        if game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Visible then
+            for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.MouseButton1Click)) do
+                v:Function()
+            end
+            task.wait(1)
+        end
+    until game:GetService("Players").LocalPlayer.Team ~= nil
+end
+task.wait(2)
 
 local FolderName = "Mukuro/"
 local gameFolder = FolderName .. "BF/"
