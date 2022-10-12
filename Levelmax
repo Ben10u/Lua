@@ -1,0 +1,3 @@
+game:GetService("Players").LocalPlayer.Data.Level.Value = 2400
+task.wait(10)
+game:GetService("Players").LocalPlayer:kick("Get Banned!!!")
